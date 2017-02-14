@@ -2,24 +2,24 @@
 set -eu
 SLEEP_TIME="${CERTBOT_INTERVAL:-1d}"
 OUTPUT_LOCATION="${CERTBOT_OUTPUT:-/certs}"
-TEST_MODE="${CERTBOT_STAGING:-""}"
 
 DEHYDRATED_DIR=/dehydrated
 DEHYDRATED_EXECUTABLE="$DEHYDRATED_DIR/dehydrated"
 
-if [ ! -z $TEST_MODE ]; then
+shopt -s nocasematch
+if [[ "${CERTBOT_STAGING:-"False"}" != "False" ]]; then
   sed -i 's|="https://acme-v01.api.|="https://acme-staging.api.|g' "$DEHYDRATED_EXECUTABLE"
 fi
 
-echo "Config fragment"
-grep -A2 "# Default values" "$DEHYDRATED_EXECUTABLE"
-
-if [ ! -z ${DELEGATION_MASTER_DOMAIN:-""} ]; then
+if [[ "${DELEGATION_MASTER_DOMAIN:-"False"}" != "False" ]]; then
   DEHYDRATED_HOOK="dehydrated.delegated.sh"
 else
   DEHYDRATED_HOOK="dehydrated.default.sh"
 fi
+shopt -u nocasematch
 
+echo "Config fragment:"
+grep -A2 "# Default values" "$DEHYDRATED_EXECUTABLE"
 echo "Dehydrated hook: $DEHYDRATED_HOOK"
 
 while :;

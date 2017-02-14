@@ -6,11 +6,15 @@ Autonomous docker container responsible for issuing and renewing Letsencrypt cer
 ## Environment variables
 
 * `PROVIDER=route53` - optional (defaults to `cloudflare`).
-* `LEXICON_ROUTE53_ACCESS_KEY=<AWS IAM user Access Key ID>` - required if PROVIDER is set to `route53`
-* `LEXICON_ROUTE53_ACCESS_SECRET=<AWS IAM user Secret Key>` - required if PROVIDER is set to `route53`
+* `LEXICON_ROUTE53_ACCESS_KEY=<AWS IAM user Access Key ID>` - required
+if PROVIDER is set to `route53`
+* `LEXICON_ROUTE53_ACCESS_SECRET=<AWS IAM user Secret Key>` - required
+if PROVIDER is set to `route53`
 * `CERTBOT_DOMAIN` - the domain to get the certificate for.
-* `CERTBOT_STAGING` - if set to any non-empty value, requests a fake certificate, not subject to rate limits.
-* `DELEGATION_MASTER_DOMAIN` - if specified, indicates the master domain that delegates `CERTBOT_DOMAIN` to another authority.
+* `CERTBOT_STAGING` - if set to anything but `False`, requests a fake certificate,
+not subject to rate limits.
+* `DELEGATION_MASTER_DOMAIN` - if specified, indicates the master domain that
+delegates `CERTBOT_DOMAIN` to another authority. `False` is equivalent to not set.
 
 ## Volumes
 
