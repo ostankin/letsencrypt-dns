@@ -11,6 +11,7 @@ run apk add --update \
 
 RUN cd / \
  && git clone https://github.com/lukas2511/dehydrated.git \
+ && git checkout tags/v0.5.0 \
  # need to install boto3 explicitly. For some reason dns-lexicon[route53] doesn't seem to do it
  && pip install dns-lexicon dns-lexicon[route53] boto3
 
