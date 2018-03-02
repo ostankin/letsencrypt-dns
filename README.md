@@ -13,8 +13,7 @@ if PROVIDER is set to `route53`
 * `CERTBOT_DOMAIN` - the domain to get the certificate for.
 * `CERTBOT_STAGING` - if set to anything but `False`, requests a fake certificate,
 not subject to rate limits.
-* `DELEGATION_MASTER_DOMAIN` - if specified, indicates the master domain that
-delegates `CERTBOT_DOMAIN` to another authority. `False` is equivalent to not set.
+* `CERTBOT_DELEGATED` - if specified, indicates the part of the domain delegated to another DNS authority. `False` is equivalent to not set.
 
 ## Volumes
 
