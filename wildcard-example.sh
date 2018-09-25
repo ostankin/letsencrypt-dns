@@ -2,8 +2,8 @@
 
 # In your environment, you should have these defined:
 
-#AWS_ACCESS_KEY="AAAAAAAAAAAAAAAAAAAA"
-#AWS_ACCESS_SECRET="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+#AWS_ACCESS_KEY_ID="AAAAAAAAAAAAAAAAAAAA"
+#AWS_SECRET_ACCESS_KEY="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 # STAGING=False
 STAGING=True
@@ -16,4 +16,4 @@ docker run -e PROVIDER=route53 \
        -e CERTBOT_DELEGATED="z.example.com" \
        -e CERTBOT_ALIAS="staging_star_z.example.com" \
        -v /var/lib/letsencrypt-dns-staging:/certs \
-       letsencrypt_dns2
+       salemove/letsencrypt-dns

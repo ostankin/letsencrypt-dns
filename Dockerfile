@@ -9,7 +9,6 @@ run apk add --update \
         py-pip \
         python
 
-# Was 0.5.0
 RUN cd / \
  && git clone https://github.com/lukas2511/dehydrated.git \
  && (cd dehydrated && git checkout tags/v0.6.2) \
