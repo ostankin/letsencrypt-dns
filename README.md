@@ -14,6 +14,9 @@ if PROVIDER is set to `route53`
 * `CERTBOT_STAGING` - if set to anything but `False`, requests a fake certificate,
 not subject to rate limits.
 * `CERTBOT_DELEGATED` - if specified, indicates the part of the domain delegated to another DNS authority. `False` is equivalent to not set.
+* `CERTBOT_ALIAS` - if specified, sets the name of the directory under `/certs` to be used.
+
+`CERTBOT_ALIAS` is required to request wildcard certificates.
 
 ## Volumes
 
