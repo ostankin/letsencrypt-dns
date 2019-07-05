@@ -2,6 +2,7 @@
 
 # In your environment, you should have these defined:
 
+# This is optional if you have an IAM role or AWS Profile:
 #AWS_ACCESS_KEY_ID="AAAAAAAAAAAAAAAAAAAA"
 #AWS_SECRET_ACCESS_KEY="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
