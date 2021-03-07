@@ -1,0 +1,10 @@
+--- dehydrated.default.sh
++++ dehydrated.updated.sh
+@@ -152,4 +152,7 @@
+ HANDLER=$1; shift;
+ if [ -n "$(type -t $HANDLER)" ] && [ "$(type -t $HANDLER)" = function ]; then
+   $HANDLER "$@"
++  if [ -x "/hooks/$HANDLER" ]; then
++    "/hooks/$HANDLER" "$@"
++  fi
+ fi

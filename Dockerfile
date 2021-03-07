@@ -26,6 +26,9 @@ RUN cd / \
 
 ADD https://raw.githubusercontent.com/AnalogJ/lexicon/eaacd80fa8e88ec516e51dfacb7aa5a61783e6a2/examples/dehydrated.default.sh /dehydrated/
 RUN chmod +x /dehydrated/dehydrated.default.sh
+ADD hook.diff /dehydrated/
+RUN cat /dehydrated/hook.diff | patch /dehydrated/dehydrated.default.sh \
+  && chmod +x /dehydrated/dehydrated.default.sh
 ADD dns-certbot.sh /dns-certbot.sh
 RUN chmod +x /dns-certbot.sh
 

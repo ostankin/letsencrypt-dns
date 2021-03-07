@@ -35,6 +35,27 @@ For `PROVIDER=route53` the following variables are expected, but they are option
 
 ## Volumes
 
-* `<your Letsencrypt certificates directory>:/certs`
+### Persistent certificate storage
+
+`<your Letsencrypt certificates directory>:/certs`
+
+Mounting a host volume to `/certs` makes sure the certificates issued by Letsencrypt are not gone when the docker container dies.
+
+### Custom event hooks
+
+`<your custom hooks for Letsencrypt events>:/hooks:ro`
+
+Every time Dehydrated launches certbot, it attaches a hook to each event that certbot can issue. The events are as follows:
+
+* `deploy_challenge` - called when certbot requests a domain validation
+* `clean_challenge` - called when the domain validation challenge is no longer needed
+* `invalid_challenge` - called when a domain validation has failed
+* `deploy_cert` - called when a new certificate has been issued
+* `unchanged_cert` - called when certbot has run 
+* `startup_hook` - called at the start of Dehydrated
+* `exit_hook` - called when Dehydrated exits
+
+If Dehydrated finds an executable script in `/hooks` directory with the same name as the event that triggered, it calls this script.
+For example, `/hooks/deploy_cert` can be a script that reloads `nginx` in order to pick up the new certificate.
 
 [1]: https://github.com/AnalogJ/lexicon/tree/d30759754272c8fa2e7426b0fe0980022318083e#usage
