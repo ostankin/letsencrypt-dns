@@ -6,8 +6,10 @@ RUN apk add --update \
         bash \
         curl \
         git \
+        patch \
         openssl \
-        python3
+        python3 \
+        py3-pip
 
 RUN cd / \
  && apk add --no-cache --virtual .build-deps \
